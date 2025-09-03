@@ -17,7 +17,6 @@ def deals_list(request):
         user = request.bitrix_user
         user_token = request.bitrix_user_token
         
-        # Получаем сделки через API
         bitrix_service = Bitrix24Service(user_token)
         deals = bitrix_service.get_user_deals(limit=10)
         
@@ -42,7 +41,6 @@ class DealCreateView(CreateView):
     
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        # Убираем instance, так как DealForm - это Form, а не ModelForm
         if 'instance' in kwargs:
             del kwargs['instance']
         return kwargs
@@ -55,7 +53,6 @@ class DealCreateView(CreateView):
     
     def form_valid(self, form):
         try:
-            # Создаем сделку в Битрикс24
             user_token = self.request.bitrix_user_token
             bitrix_service = Bitrix24Service(user_token)
             
