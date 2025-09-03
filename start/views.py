@@ -48,27 +48,19 @@ def start(request):
         print(f"Ошибка при создании кастомного поля: {e}")
 
     app_settings = settings.APP_SETTINGS
-    return render(request, 'start_page.html', locals())
+    context = {
+        'user': request.bitrix_user,
+        'is_authenticated': True,
+        'app_settings': app_settings
+    }
+    return render(request, 'start_page.html', context)
 
 
+@main_auth(on_cookies=True)
 def home(request):
     """Простая главная страница для всех пользователей"""
-    try:
-        if hasattr(request, 'bitrix_user') and request.bitrix_user:
-            user = request.bitrix_user
-            context = {
-                'user': user,
-                'is_authenticated': True
-            }
-        else:
-            context = {
-                'user': None,
-                'is_authenticated': False
-            }
-
-        return render(request, 'start_page.html', context)
-    except:
-        return render(request, 'start_page.html', {
-            'user': None,
-            'is_authenticated': False
-        })
+    context = {
+        'user': request.bitrix_user,
+        'is_authenticated': True
+    }
+    return render(request, 'start_page.html', context)
