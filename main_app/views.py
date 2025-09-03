@@ -19,7 +19,7 @@ def deals_list(request):
         
         # Получаем сделки через API
         bitrix_service = Bitrix24Service(user_token)
-        deals = bitrix_service.get_user_deals(limit=100)
+        deals = bitrix_service.get_user_deals(limit=10)
         
         context = {
             'deals': deals,

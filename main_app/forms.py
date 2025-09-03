@@ -34,6 +34,17 @@ class DealForm(forms.Form):
         label="Вероятность (%)"
     )
     
+    priority = forms.ChoiceField(
+        choices=[
+            ('3', 'Высокий'),
+            ('2', 'Средний'),
+            ('1', 'Низкий')
+        ],
+        widget=forms.Select(attrs={'class': 'form-select'}),
+        label="Приоритет сделки",
+        help_text="Выберите приоритет для данной сделки"
+    )
+    
     begin_date = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date'}),
         initial=timezone.now().date(),

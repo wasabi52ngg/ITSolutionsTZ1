@@ -43,6 +43,7 @@
                                     <th>Название</th>
                                     <th>Сумма</th>
                                     <th>Вероятность</th>
+                                    <th>Приоритет</th>
                                     <th>Дата начала</th>
                                     <th>Дата закрытия</th>
                                     <th>Дата создания</th>
@@ -69,6 +70,21 @@
                                                 {{ deal.PROBABILITY }}%
                                             </div>
                                         </div>
+                                    </td>
+                                    <td>
+                                        {% if deal.UF_CRM_DEAL_PRIORITY %}
+                                            {% if deal.UF_CRM_DEAL_PRIORITY == 'high' %}
+                                                <span class="badge bg-danger">Высокий</span>
+                                            {% elif deal.UF_CRM_DEAL_PRIORITY == 'medium' %}
+                                                <span class="badge bg-warning">Средний</span>
+                                            {% elif deal.UF_CRM_DEAL_PRIORITY == 'low' %}
+                                                <span class="badge bg-success">Низкий</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary">{{ deal.UF_CRM_DEAL_PRIORITY }}</span>
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="text-muted">Не указан</span>
+                                        {% endif %}
                                     </td>
                                     <td>{{ deal.BEGINDATE|default:"Не указана" }}</td>
                                     <td>{{ deal.CLOSEDATE|default:"Не указана" }}</td>

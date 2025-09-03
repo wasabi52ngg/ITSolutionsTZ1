@@ -1,53 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>ITSolutions TZ1 - Приложение для Битрикс24</title>
-    <style>
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .welcome {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .menu-item {
-            background: #fff;
-            padding: 25px;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        .menu-item:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-            text-decoration: none;
-            color: #333;
-        }
-        .menu-item h3 {
-            margin-top: 0;
-            color: #007bff;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'start/css/style.css' %}">
 </head>
 <body>
     <div class="container">
@@ -67,6 +24,10 @@
             <a href="/app/deals/create/" class="menu-item">
                 <h3>➕ Создать сделку</h3>
                 <p>Форма для создания новой сделки в Битрикс24</p>
+            </a>
+            <a href="/recreate-priority-field/" class="menu-item">
+                <h3>🔄 Пересоздать поле</h3>
+                <p>Удалить и создать заново поле приоритета</p>
             </a>
         </div>
     </div>
