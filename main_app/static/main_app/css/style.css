@@ -18,6 +18,15 @@
     font-weight: 600;
 }
 
+.table td {
+    vertical-align: middle;
+}
+
+.table-responsive {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 .btn {
     border-radius: 6px;
     font-weight: 500;
@@ -29,6 +38,24 @@
 
 .badge {
     font-size: 0.8em;
+}
+
+/* Стили для комментариев */
+.comments-cell {
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.comments-text {
+    font-size: 0.85em;
+    line-height: 1.3;
+    color: #6c757d;
+}
+
+/* Стили для дат */
+.date-cell {
+    white-space: nowrap;
+    font-size: 0.9em;
 }
 
 /* Стили для форм */
@@ -45,4 +72,16 @@
 .menu-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Стили для таблицы сделок */
+.deals-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f8f9fa;
+}
+
+.deals-table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
 }

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load deal_filters %}
 
 {% block title %}Список сделок{% endblock %}
 
@@ -36,7 +37,7 @@
             <div class="card-body">
                 {% if deals %}
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover deals-table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -47,6 +48,7 @@
                                     <th>Дата начала</th>
                                     <th>Дата закрытия</th>
                                     <th>Дата создания</th>
+                                    <th>Комментарии</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,9 +88,12 @@
                                             <span class="text-muted">Не указан</span>
                                         {% endif %}
                                     </td>
-                                    <td>{{ deal.BEGINDATE|default:"Не указана" }}</td>
-                                    <td>{{ deal.CLOSEDATE|default:"Не указана" }}</td>
-                                    <td>{{ deal.DATE_CREATE|default:"Не указана" }}</td>
+                                    <td class="date-cell">{{ deal.BEGINDATE|format_bitrix_date }}</td>
+                                    <td class="date-cell">{{ deal.CLOSEDATE|format_bitrix_date }}</td>
+                                    <td class="date-cell">{{ deal.DATE_CREATE|format_bitrix_date }}</td>
+                                    <td class="comments-cell">
+                                        <span class="comments-text">{{ deal.COMMENTS|format_comments }}</span>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

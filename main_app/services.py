@@ -63,7 +63,7 @@ class Bitrix24Service:
                 'select': [
                     'ID', 'TITLE', 'OPPORTUNITY', 'CURRENCY_ID',
                     'PROBABILITY', 'BEGINDATE', 'CLOSEDATE', 'DATE_CREATE',
-                    'UF_CRM_DEAL_PRIORITY'
+                    'UF_CRM_DEAL_PRIORITY', 'COMMENTS'
                 ],
                 'order': {'DATE_CREATE': 'DESC'},
                 'start': 0
