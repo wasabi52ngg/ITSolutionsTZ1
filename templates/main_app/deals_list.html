@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Список сделок{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Список сделок</h1>
+        <p class="lead">Все ваши сделки в Битрикс24</p>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <a href="{% url 'main_app:deal_create' %}" class="btn btn-success">
+            Создать новую сделку
+        </a>
+        <a href="/home/" class="btn btn-outline-primary">
+            Назад на главную
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Сделки пользователя 
+                    {% if user.first_name or user.last_name %}
+                        {{ user.first_name|default:"" }} {{ user.last_name|default:"" }}
+                    {% else %}
+                        пользователь
+                    {% endif %}
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if deals %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th>Сумма</th>
+                                    <th>Вероятность</th>
+                                    <th>Дата начала</th>
+                                    <th>Дата закрытия</th>
+                                    <th>Дата создания</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for deal in deals %}
+                                <tr>
+                                    <td><span class="badge bg-secondary">{{ deal.ID }}</span></td>
+                                    <td><strong>{{ deal.TITLE }}</strong></td>
+                                    <td>
+                                        {% if deal.OPPORTUNITY %}
+                                            <span class="text-success">{{ deal.OPPORTUNITY }} {{ deal.CURRENCY_ID }}</span>
+                                        {% else %}
+                                            <span class="text-muted">Не указана</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar" role="progressbar" 
+                                                 style="width: {{ deal.PROBABILITY }}%"
+                                                 aria-valuenow="{{ deal.PROBABILITY }}" 
+                                                 aria-valuemin="0" aria-valuemax="100">
+                                                {{ deal.PROBABILITY }}%
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{ deal.BEGINDATE|default:"Не указана" }}</td>
+                                    <td>{{ deal.CLOSEDATE|default:"Не указана" }}</td>
+                                    <td>{{ deal.DATE_CREATE|default:"Не указана" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <p class="text-muted">У вас пока нет сделок</p>
+                        <a href="{% url 'main_app:deal_create' %}" class="btn btn-primary">
+                            Создать первую сделку
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

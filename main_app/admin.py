@@ -1,3 +1,2 @@
-from django.contrib import admin
-
-# Register your models here.
+# Админка не нужна для данного проекта
+# Все данные управляются через веб-интерфейс приложения

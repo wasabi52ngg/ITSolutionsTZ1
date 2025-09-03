@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Создание сделки{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Создание новой сделки</h1>
+        <p class="lead">Заполните форму для создания сделки в Битрикс24</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Данные сделки</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="{{ form.title.id_for_label }}" class="form-label">
+                                {{ form.title.label }}
+                            </label>
+                            {{ form.title }}
+                            {% if form.title.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.title.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.opportunity.id_for_label }}" class="form-label">
+                                {{ form.opportunity.label }}
+                            </label>
+                            {{ form.opportunity }}
+                            {% if form.opportunity.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.opportunity.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.currency_id.id_for_label }}" class="form-label">
+                                {{ form.currency_id.label }}
+                            </label>
+                            {{ form.currency_id }}
+                            {% if form.currency_id.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.currency_id.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.begin_date.id_for_label }}" class="form-label">
+                                {{ form.begin_date.label }}
+                            </label>
+                            {{ form.begin_date }}
+                            {% if form.begin_date.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.begin_date.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.close_date.id_for_label }}" class="form-label">
+                                {{ form.close_date.label }}
+                            </label>
+                            {{ form.close_date }}
+                            {% if form.close_date.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.close_date.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="{{ form.probability.id_for_label }}" class="form-label">
+                                {{ form.probability.label }}
+                            </label>
+                            {{ form.probability }}
+                            {% if form.probability.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.probability.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="{{ form.comments.id_for_label }}" class="form-label">
+                                {{ form.comments.label }}
+                            </label>
+                            {{ form.comments }}
+                            {% if form.comments.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.comments.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">
+                                Создать сделку
+                            </button>
+                            <a href="{% url 'main_app:deals_list' %}" class="btn btn-outline-secondary">
+                                Отмена
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
