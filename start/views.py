@@ -17,10 +17,9 @@ def start(request):
             try:
                 response = request.bitrix_user_token.call_api_method('crm.deal.userfield.list', {})
                 field_exists = False
-                field_id = None
                 if response.get('result'):
                     for field in response['result']:
-                        if field.get('FIELD_NAME') == 'DEAL_PRIORITY':
+                        if field.get('FIELD_NAME') == 'UF_CRM_DEAL_PRIORITY':
                             field_exists = True
                             field_id = field.get('ID')
 
