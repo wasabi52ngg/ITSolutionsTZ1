@@ -90,7 +90,7 @@ class Bitrix24Service:
             return []
 
         except Exception as e:
-            print(f"❌ Ошибка при получении сделок: {e}")
+            print(f"Ошибка при получении сделок: {e}")
             return []
 
     def create_deal(self, deal_data: Dict[str, Any]) -> Dict[str, Any]:

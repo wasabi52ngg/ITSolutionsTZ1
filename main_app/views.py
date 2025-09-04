@@ -69,7 +69,6 @@ class DealCreateView(View):
             except Exception as e:
                 messages.error(request, f'Ошибка при создании сделки: {str(e)}')
         
-        # Если форма невалидна или произошла ошибка, показываем форму снова
         context = {
             'form': form,
             'user': request.bitrix_user,

@@ -11,13 +11,7 @@
         <div class="header">
             <h1>ITSolutions TZ1</h1>
             <div class="welcome">
-                {% if user %}
-                    Здравствуйте, {{ user.first_name|default:"" }} {{ user.last_name|default:"" }}!
-                {% elif request.bitrix_user %}
                     Здравствуйте, {{ request.bitrix_user.first_name|default:"" }} {{ request.bitrix_user.last_name|default:"" }}!
-                {% else %}
-                    Здравствуйте, гость!
-                {% endif %}
             </div>
             <p>Приложение для интеграции с Битрикс24</p>
         </div>
