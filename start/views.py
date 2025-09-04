@@ -53,7 +53,7 @@ def start(request):
         'is_authenticated': True,
         'app_settings': app_settings
     }
-    return render(request, 'start_page.html', context)
+    return render(request, 'start/start_page.html', context)
 
 
 @main_auth(on_cookies=True)
@@ -63,4 +63,4 @@ def home(request):
         'user': request.bitrix_user,
         'is_authenticated': True
     }
-    return render(request, 'start_page.html', context)
+    return render(request, 'start/start_page.html', context)
