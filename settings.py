@@ -106,17 +106,5 @@ except ImportError:
     from warnings import warn
     warn('create local_settings.py')
 
-if not APP_SETTINGS:
-    from integration_utils.bitrix24.local_settings_class import LocalSettingsClass
-    APP_SETTINGS = LocalSettingsClass(
-        portal_domain='your-portal.bitrix24.ru',
-        app_domain='localhost:8000',
-        app_name='itsolutions_tz1',
-        salt='your-salt-key-here-change-this',
-        secret_key='your-secret-key-here-change-this',
-        application_bitrix_client_id='your-client-id',
-        application_bitrix_client_secret='your-client-secret',
-        application_index_path='/',
-    )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

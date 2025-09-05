@@ -7,7 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('main_app.urls')),
     path('', include('start.urls')),
-    path('bitrix24/', include('integration_utils.bitrix24.urls')),
 ]
 
 if settings.DEBUG:
